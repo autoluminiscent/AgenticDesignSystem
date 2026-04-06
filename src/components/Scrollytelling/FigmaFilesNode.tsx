@@ -243,11 +243,11 @@ const FigmaFilesNode: React.FC = () => {
                 ...s.innerCard,
                 backgroundColor: hl('--neutral-300', '--orange-300', isChild('fichierDesign')),
                 transition: 'background-color 0.3s ease',
-                justifyContent: 'center', textAlign: 'center', alignItems: 'flex-start',
+                justifyContent: 'center', alignItems: 'flex-start',
               }}>
                 <div style={{ width: '100%' }}>
-                  <div style={{ ...s.innerTitle, textAlign: 'center' }}>Maquettes finales</div>
-                  <div style={{ ...s.innerSubtitle, textAlign: 'center' }}>Qui implémente les composants du DS</div>
+                  <div style={s.innerTitle}>Maquettes finales</div>
+                  <div style={s.innerSubtitle}>Qui implémente les composants du DS</div>
                 </div>
               </div>
 
@@ -260,11 +260,11 @@ const FigmaFilesNode: React.FC = () => {
                 border: `1px dashed ${isChild('fichierDesign') ? 'var(--orange-500)' : 'var(--neutral-500)'}`,
                 transition: 'border-color 0.3s ease',
                 display: 'flex', flexDirection: 'column',
-                justifyContent: 'center', alignItems: 'flex-start', textAlign: 'center',
+                justifyContent: 'flex-start', alignItems: 'flex-start',
               }}>
                 <div style={{ width: '100%' }}>
-                  <div style={{ ...s.innerTitle, textAlign: 'center' }}>Design temporaire</div>
-                  <div style={{ ...s.innerSubtitle, textAlign: 'center' }}>Qui n'utilise pas les composants Figma</div>
+                  <div style={s.innerTitle}>Design temporaire</div>
+                  <div style={s.innerSubtitle}>Qui n'utilise pas les composants Figma</div>
                 </div>
               </div>
             </div>

@@ -11,7 +11,7 @@ type HoverTarget = null | 'mother' | 'claudeCode' | 'composants' | 'stories' | '
 
 const CARD_W = 820;
 const MCP_H = 46;
-const MCP_W = 320;
+const MCP_W = 220;
 const D = 24;
 
 const ReactDSNode: React.FC = () => {
@@ -242,8 +242,8 @@ const ReactDSNode: React.FC = () => {
           transition={{ delay: 0.9 }}
           style={{
             position: 'absolute',
-            top: 0,
-            bottom: 0,
+            top: '55%',
+            bottom: '5%',
             left: `${D + CARD_W}px`,
             width: `${MCP_H}px`,
             display: 'flex',

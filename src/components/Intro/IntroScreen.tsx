@@ -30,6 +30,7 @@ const wordVariants = {
 const IntroScreen: React.FC = () => {
   return (
     <div style={styles.container}>
+      <div style={styles.gridOverlay} />
       <div style={styles.grid}>
         
         {/* Colonne de gauche : Textes & Scrollytelling */}
@@ -164,12 +165,24 @@ const styles: Record<string, React.CSSProperties> = {
   container: {
     height: '100%',
     width: '100%',
+    position: 'relative',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
     padding: '4rem',
     boxSizing: 'border-box',
     background: 'radial-gradient(ellipse at 67% 75%, var(--neutral-200) 0%, var(--neutral-400) 100%)',
+  },
+  gridOverlay: {
+    position: 'absolute',
+    inset: 0,
+    backgroundImage: [
+      'linear-gradient(rgba(0,0,0,0.055) 1px, transparent 1px)',
+      'linear-gradient(90deg, rgba(0,0,0,0.055) 1px, transparent 1px)',
+    ].join(', '),
+    backgroundSize: '56px 56px',
+    pointerEvents: 'none',
+    zIndex: 0,
   },
   grid: {
     display: 'grid',
@@ -178,6 +191,8 @@ const styles: Record<string, React.CSSProperties> = {
     maxWidth: '1200px',
     width: '100%',
     alignItems: 'center',
+    position: 'relative',
+    zIndex: 1,
   },
   leftCol: {
     display: 'flex',
@@ -254,7 +269,7 @@ const styles: Record<string, React.CSSProperties> = {
     borderRadius: '2px',
   },
   scrollText: {
-    fontSize: '24px',
+    fontSize: '20px',
     fontWeight: 400,
     color: 'var(--neutral-800)',
     letterSpacing: '-1.2px',

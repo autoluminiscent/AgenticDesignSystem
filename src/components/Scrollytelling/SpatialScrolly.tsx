@@ -4,6 +4,7 @@ import FigmaNodeScreen from './FigmaNodeScreen';
 import FigmaFilesNode from './FigmaFilesNode';
 import ReactDSNode from './ReactDSNode';
 import AppFinaleNode from './AppFinaleNode';
+import CanvasConnections from './CanvasConnections';
 import SidePanel, { PanelText, PanelStrong } from './SidePanel';
 import figmaLight from '../../assets/figma-light.svg';
 import reactColored from '../../assets/react-colored.svg';
@@ -171,6 +172,16 @@ const SpatialScrolly: React.FC<SpatialScrollyProps> = ({ step }) => {
           mixBlendMode: 'soft-light',
           pointerEvents: 'none',
         }} />
+        {/* Subtle grid overlay */}
+        <div style={{
+          position: 'absolute', inset: 0,
+          backgroundImage: [
+            'linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px)',
+            'linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px)',
+          ].join(', '),
+          backgroundSize: '80px 80px',
+          pointerEvents: 'none',
+        }} />
       </motion.div>
 
       {/* SPATIAL CANVAS */}
@@ -186,6 +197,9 @@ const SpatialScrolly: React.FC<SpatialScrollyProps> = ({ step }) => {
           : { type: 'spring', damping: 25, stiffness: 60, mass: 1 }
         }
       >
+        {/* ── Connection arrows between nodes ── */}
+        <CanvasConnections />
+
         {/* Node 1 — Figma Design System (top-left) */}
         <div style={{ ...styles.nodeContainer, left: `${NODE_POSITIONS[0].x}px`, top: `${NODE_POSITIONS[0].y}px` }}>
           <FigmaNodeScreen />
