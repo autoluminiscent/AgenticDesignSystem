@@ -6,7 +6,7 @@ import ReactDSNode from './ReactDSNode';
 import AppFinaleNode from './AppFinaleNode';
 import CanvasConnections from './CanvasConnections';
 import SidePanel, { PanelText, PanelStrong } from './SidePanel';
-import figmaLight from '../../assets/figma-light.svg';
+import figmaColored from '../../assets/figma-colored.svg';
 import reactColored from '../../assets/react-colored.svg';
 
 interface SpatialScrollyProps {
@@ -225,7 +225,7 @@ const SpatialScrolly: React.FC<SpatialScrollyProps> = ({ step }) => {
       <AnimatePresence mode="wait">
         {step === 2 && (
           <SidePanel key="panel-2" side="left" title="Figma Design System"
-            icon={<img src={figmaLight} alt="Figma" style={{ height: '28px', width: 'auto' }} />}>
+            icon={<img src={figmaColored} alt="Figma" style={{ height: '28px', width: 'auto' }} />}>
             <PanelText>
               Le <PanelStrong>Design System Figma</PanelStrong> est la source de vérité pour tout le design. Les designers y créent les composants (Button, Input, Card, Modal...) avec leurs variants et propriétés, alimentés par un système de variables structurées.
             </PanelText>
@@ -243,12 +243,12 @@ const SpatialScrolly: React.FC<SpatialScrollyProps> = ({ step }) => {
 
         {step === 3 && (
           <SidePanel key="panel-3" side="right" title="Fichiers de Design"
-            icon={<img src={figmaLight} alt="Figma" style={{ height: '28px', width: 'auto' }} />}>
+            icon={<img src={figmaColored} alt="Figma" style={{ height: '28px', width: 'auto' }} />}>
             <PanelText align="right">
               Les <PanelStrong>fichiers de design Figma</PanelStrong> sont l'espace de travail quotidien des designers. Ils contiennent les maquettes organisées page par page, fonctionnalité par fonctionnalité.
             </PanelText>
             <PanelText align="right">
-              <PanelStrong>Figma Make</PanelStrong> permet aux agents IA (Claude, Gemini, GPT) de générer des prototypes interactifs directement en React, à partir de simples instructions en langage naturel.
+              Les designers peuvent utiliser <PanelStrong>Figma Make</PanelStrong> pour générer rapidement des prototypes interactifs en React via des agents IA (Claude, Gemini, GPT) — accélérant les cycles d'idéation et de tests avant de valider une direction de design.
             </PanelText>
             <PanelText align="right">
               Le <PanelStrong>Fichier de Design</PanelStrong> distingue les maquettes "token-compliant" qui implémentent les composants du DS, des designs temporaires créés rapidement sans instances.
@@ -273,6 +273,9 @@ const SpatialScrolly: React.FC<SpatialScrollyProps> = ({ step }) => {
             </PanelText>
             <PanelText>
               Le <PanelStrong>Storybook MCP Server</PanelStrong> expose la documentation des composants aux agents IA, leur permettant de consulter les stories et les props disponibles.
+            </PanelText>
+            <PanelText>
+              Le fichier <PanelStrong>Design-System.md</PanelStrong> documente l'ensemble du système — composants, tokens, conventions de nommage et règles d'usage. C'est la mémoire écrite du DS : référencé dans le <PanelStrong>CLAUDE.md</PanelStrong> de chaque projet, il garantit que les agents IA codent toujours dans le respect du système.
             </PanelText>
           </SidePanel>
         )}

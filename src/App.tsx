@@ -52,7 +52,7 @@ function App() {
           <h1 style={styles.smallScreenTitle}>Conçu pour grand écran</h1>
           <p style={styles.smallScreenText}>
             Ce site est une expérience interactive conçue pour être explorée sur un ordinateur.
-            Ouvre-le depuis un écran d'au moins 1000px de large.
+            Ouvre-le depuis un écran d'au moins 1280px de large.
           </p>
         </div>
       </div>
@@ -86,6 +86,30 @@ function App() {
             style={styles.screenWrapper}
           >
             <SpatialScrolly step={step} />
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      <AnimatePresence>
+        {step > 0 && step < 5 && (
+          <motion.div
+            key="scroll-hint"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 10 }}
+            transition={{ duration: 0.5, delay: 0.8 }}
+            style={styles.scrollHint}
+          >
+            <motion.div
+              animate={{ y: [0, 5, 0] }}
+              transition={{ duration: 1.4, repeat: Infinity, ease: 'easeInOut' }}
+              style={styles.scrollHintInner}
+            >
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                <path d="M9 3v12M9 15l-4-4M9 15l4-4" stroke="rgba(255,255,255,0.45)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </motion.div>
+            <span style={styles.scrollHintLabel}>Scroll</span>
           </motion.div>
         )}
       </AnimatePresence>
@@ -146,6 +170,30 @@ const styles: Record<string, React.CSSProperties> = {
     color: 'rgba(255,255,255,0.92)',
     margin: '0 0 16px',
     lineHeight: 1.2,
+  },
+  scrollHint: {
+    position: 'fixed',
+    bottom: '32px',
+    left: '50%',
+    transform: 'translateX(-50%)',
+    display: 'flex',
+    flexDirection: 'column' as const,
+    alignItems: 'center',
+    gap: '4px',
+    zIndex: 50,
+    pointerEvents: 'none',
+  },
+  scrollHintInner: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  scrollHintLabel: {
+    fontFamily: "'Graphik LCG', -apple-system, sans-serif",
+    fontSize: '10px',
+    letterSpacing: '0.12em',
+    textTransform: 'uppercase' as const,
+    color: 'rgba(255,255,255,0.35)',
   },
   smallScreenText: {
     fontFamily: "'Graphik LCG', -apple-system, sans-serif",

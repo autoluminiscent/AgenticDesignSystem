@@ -82,16 +82,41 @@ const FloatingNav: React.FC<FloatingNavProps> = ({ onGoToStep, currentStep = 0 }
           ...styles.fab,
           backgroundColor: isOpen ? '#c2410c' : '#EA580C',
         }}
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.95 }}
+        whileHover={{ scale: 1.03, boxShadow: '0 12px 40px rgba(234,88,12,0.45)' }}
+        whileTap={{ scale: 0.97 }}
         onClick={() => setIsOpen(!isOpen)}
       >
-        <motion.div
-          animate={{ rotate: isOpen ? 180 : 0 }}
-          transition={{ duration: 0.3 }}
-        >
-          {isOpen ? <X color="rgba(255,255,255,0.85)" size={22} /> : <Menu color="rgba(255,255,255,0.85)" size={22} />}
-        </motion.div>
+        <AnimatePresence mode="wait">
+          {isOpen ? (
+            <motion.div
+              key="close"
+              initial={{ opacity: 0, rotate: -90 }}
+              animate={{ opacity: 1, rotate: 0 }}
+              exit={{ opacity: 0, rotate: 90 }}
+              transition={{ duration: 0.2 }}
+              style={styles.fabInner}
+            >
+              <X color="white" size={16} strokeWidth={2.5} />
+              <span style={styles.fabLabel}>Fermer</span>
+            </motion.div>
+          ) : (
+            <motion.div
+              key="open"
+              initial={{ opacity: 0, rotate: 90 }}
+              animate={{ opacity: 1, rotate: 0 }}
+              exit={{ opacity: 0, rotate: -90 }}
+              transition={{ duration: 0.2 }}
+              style={styles.fabInner}
+            >
+              <div style={styles.burgerLines}>
+                <span style={styles.burgerLine} />
+                <span style={{ ...styles.burgerLine, width: '14px' }} />
+                <span style={{ ...styles.burgerLine, width: '10px' }} />
+              </div>
+              <span style={styles.fabLabel}>Menu</span>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </motion.button>
     </div>
   );
@@ -109,17 +134,43 @@ const styles: Record<string, React.CSSProperties> = {
     zIndex: 1000,
   },
   fab: {
-    width: '52px',
-    height: '52px',
-    borderRadius: '26px',
+    height: '44px',
+    padding: '0 20px 0 16px',
+    borderRadius: '22px',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    border: '1px solid rgba(255,255,255,0.08)',
-    boxShadow: '0 8px 32px rgba(0,0,0,0.4)',
+    border: '1px solid rgba(255,255,255,0.15)',
+    boxShadow: '0 8px 32px rgba(234,88,12,0.3)',
     cursor: 'pointer',
     backdropFilter: 'blur(20px)',
     WebkitBackdropFilter: 'blur(20px)',
+    overflow: 'hidden',
+  },
+  fabInner: {
+    display: 'flex',
+    alignItems: 'center',
+    gap: '10px',
+  },
+  fabLabel: {
+    fontFamily: "'Graphik LCG', -apple-system, sans-serif",
+    fontSize: '13px',
+    fontWeight: 600,
+    color: 'white',
+    letterSpacing: '0.01em',
+  },
+  burgerLines: {
+    display: 'flex',
+    flexDirection: 'column' as const,
+    gap: '3px',
+    alignItems: 'flex-start',
+  },
+  burgerLine: {
+    display: 'block',
+    width: '18px',
+    height: '2px',
+    borderRadius: '2px',
+    backgroundColor: 'white',
   },
   menuItems: {
     display: 'flex',
