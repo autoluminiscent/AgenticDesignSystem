@@ -1,0 +1,237 @@
+@font-face {
+  font-family: 'Graphik LCG';
+  src: url('./assets/fonts/Graphik LCG/GraphikLCG-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Graphik LCG';
+  src: url('./assets/fonts/Graphik LCG/GraphikLCG-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Graphik LCG';
+  src: url('./assets/fonts/Graphik LCG/GraphikLCG-Semibold.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Graphik LCG';
+  src: url('./assets/fonts/Graphik LCG/GraphikLCG-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Canela Deck';
+  src: url('./assets/fonts/Canela Deck Family/CanelaDeck-Light-Trial.otf') format('opentype');
+  font-weight: 300;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Canela Deck';
+  src: url('./assets/fonts/Canela Deck Family/CanelaDeck-Regular-Trial.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Canela Deck';
+  src: url('./assets/fonts/Canela Deck Family/CanelaDeck-RegularItalic-Trial.otf') format('opentype');
+  font-weight: 400;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'Canela Deck';
+  src: url('./assets/fonts/Canela Deck Family/CanelaDeck-Medium-Trial.otf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Canela Deck';
+  src: url('./assets/fonts/Canela Deck Family/CanelaDeck-MediumItalic-Trial.otf') format('opentype');
+  font-weight: 500;
+  font-style: italic;
+}
+
+:root {
+  --font-display: 'Graphik LCG', -apple-system, sans-serif;
+  --font-body: 'Graphik LCG', -apple-system, sans-serif;
+  --font-serif: 'Canela Deck', Georgia, serif;
+  font-family: var(--font-body);
+
+  /* Thème Gris & Scrollytelling Base */
+  --bg-color: #E2E6EC; /* Fond global basé sur l'image */
+  --panel-bg: rgba(255, 255, 255, 0.8);
+  --panel-bg-solid: #ffffff;
+  
+  /* Neutrals */
+  --neutral-0: #FFFFFF;
+  --neutral-50: #F8F9FA;
+  --neutral-100: #EAECEF;
+  --neutral-200: #DFE2E6;
+  --neutral-300: #CFD4DA;
+  --neutral-400: #AFB5BC;
+  --neutral-500: #6E757C;
+  --neutral-600: #4B5057;
+  --neutral-700: #353A40;
+  --neutral-800: #222529;
+
+  /* Oranges */
+  --orange-50: #FEEEE9;
+  --orange-100: #FBDDD4;
+  --orange-200: #F9CBBD;
+  --orange-300: #F7BBA7;
+  --orange-400: #F5A991;
+  --orange-500: #F0754D;
+  --orange-600: #EB5321;
+  --orange-700: #D54B1E;
+  --orange-800: #A53B17;
+
+  /* Blues */
+  --blue-50: #EFFBFF;
+  --blue-100: #DFF8FE;
+  --blue-200: #D0F4FE;
+  --blue-300: #C0F1FD;
+  --blue-400: #B0EDFD;
+  --blue-500: #60DCFB;
+  --blue-600: #316E7E;
+  --blue-700: #275865;
+  --blue-800: #122D32;
+
+  /* Aliases limitant la casse du code existant avant refacto complète */
+  --gray-100: var(--neutral-0);
+  --gray-200: var(--neutral-50);
+  --gray-300: var(--neutral-100);
+  --gray-400: var(--neutral-200);
+  --gray-500: var(--neutral-400);
+  --gray-600: var(--neutral-500);
+  --gray-700: var(--neutral-600);
+  --gray-800: var(--neutral-700);
+  --gray-900: var(--neutral-800);
+  --gray-950: var(--neutral-800);
+
+  --text-main: var(--neutral-800);
+  --text-secondary: var(--neutral-600);
+  --text-muted: var(--neutral-400);
+  --border-color: rgba(0, 0, 0, 0.06);
+  --border-active: rgba(0, 0, 0, 0.12);
+
+  /* Ombres */
+  --shadow-sm: 0 1px 2px rgba(0,0,0,0.04);
+  --shadow-md: 0 4px 12px rgba(0,0,0,0.05);
+  --shadow-lg: 0 8px 24px rgba(0,0,0,0.07);
+  --shadow-xl: 0 16px 48px rgba(0,0,0,0.09);
+  --shadow-card: 0 1px 3px rgba(0,0,0,0.03), 0 6px 24px rgba(0,0,0,0.05);
+  --shadow-card-hover: 0 4px 12px rgba(0,0,0,0.06), 0 12px 36px rgba(0,0,0,0.08);
+  --glass-shadow: 0 8px 32px rgba(0,0,0,0.06);
+
+  /* Couleurs de highlights */
+  --c-agent: #EF4423; /* Orange vif extrait du titre */
+  --c-agent-light: #F97316;
+  --c-agent-bg: #FFF7ED;
+
+  color-scheme: light;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body, #root {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--neutral-200);
+  color: var(--text-main);
+  overflow-x: hidden; /* Permet le scroll vertical, bloque l'horizontal */
+  font-size: 14px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  cursor: none;
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  color: var(--text-main);
+  letter-spacing: -0.025em;
+}
+
+p {
+  line-height: 1.7;
+  color: var(--text-secondary);
+}
+
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: inherit;
+  font-family: inherit;
+}
+
+/* Scrollbar */
+.custom-scrollbar::-webkit-scrollbar { width: 4px; }
+.custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+.custom-scrollbar::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.08); border-radius: 10px; }
+.custom-scrollbar::-webkit-scrollbar-thumb:hover { background: rgba(0,0,0,0.14); }
+
+/* Animations */
+@keyframes pulseGlow {
+  0%, 100% { box-shadow: 0 0 0 0 var(--pulse-color, rgba(124,58,237,0.3)); }
+  50% { box-shadow: 0 0 0 6px transparent; }
+}
+.pulse-active { animation: pulseGlow 2s infinite ease-out; }
+
+@keyframes dashFlow {
+  from { stroke-dashoffset: 20; }
+  to { stroke-dashoffset: 0; }
+}
+.animate-dash { animation: dashFlow 1s linear infinite; }
+
+/* Dot grid */
+.bg-dot-pattern {
+  background-image: radial-gradient(circle, rgba(0,0,0,0.06) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+/* Glass */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border: 1px solid rgba(255,255,255,0.55);
+  box-shadow: var(--glass-shadow);
+}
+
+/* Typewriter animation */
+@keyframes typewriter-cursor {
+  0%, 100% { border-color: var(--c-figma-ds); }
+  50% { border-color: transparent; }
+}
+.typewriter-cursor {
+  border-right: 2px solid var(--c-figma-ds);
+  animation: typewriter-cursor 1s step-end infinite;
+}
+
+/* Selection */
+::selection {
+  background: var(--c-figma-ds-light);
+  color: white;
+}
+
+/* Zone labels */
+.zone-label {
+  font-family: var(--font-display);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  position: absolute;
+  padding: 6px 14px;
+  border-radius: 8px;
+  user-select: none;
+  pointer-events: none;
+}
