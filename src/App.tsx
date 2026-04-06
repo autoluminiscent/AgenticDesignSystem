@@ -29,7 +29,7 @@ function App() {
       if (e.metaKey || e.ctrlKey) return;
       if (isTransitioning.current) return;
 
-      if (e.deltaY > 5 && step < 5) {
+      if (e.deltaY > 5 && step < 6) {
         isTransitioning.current = true;
         setStep(s => s + 1);
         setTimeout(() => { isTransitioning.current = false; }, 800);
@@ -85,13 +85,52 @@ function App() {
             transition={{ duration: 0.6 }}
             style={styles.screenWrapper}
           >
-            <SpatialScrolly step={step} />
+            <SpatialScrolly step={Math.min(step, 5)} />
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* OUTRO OVERLAY — step 6 */}
+      <AnimatePresence>
+        {step === 6 && (
+          <motion.div
+            key="outro"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.9, ease: 'easeInOut' }}
+            style={styles.outroOverlay}
+          >
+            {/* Radial vignette to make it feel like fading from the canvas */}
+            <div style={styles.outroNoise} />
+            <motion.div
+              initial={{ opacity: 0, y: 24 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 12 }}
+              transition={{ duration: 0.7, delay: 0.3, ease: 'easeOut' }}
+              style={styles.outroContent}
+            >
+              <motion.div
+                animate={{ opacity: [0.4, 0.8, 0.4] }}
+                transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
+                style={styles.outroPill}
+              >
+                <span style={styles.outroPillDot} />
+                <span style={styles.outroPillText}>En cours de construction</span>
+              </motion.div>
+              <h2 style={styles.outroTitle}>
+                Plus de workflows et<br />de détails à venir.
+              </h2>
+              <p style={styles.outroSub}>
+                Scrollez vers le haut pour revenir au diagramme.
+              </p>
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>
 
       <AnimatePresence>
-        {step > 0 && step < 5 && (
+        {step > 0 && step < 6 && (
           <motion.div
             key="scroll-hint"
             initial={{ opacity: 0, y: 10 }}
@@ -114,7 +153,7 @@ function App() {
         )}
       </AnimatePresence>
 
-      {step > 0 && (
+      {step > 0 && step < 6 && (
         <FloatingNav
           currentStep={step}
           onGoToStep={(s) => {
@@ -194,6 +233,69 @@ const styles: Record<string, React.CSSProperties> = {
     letterSpacing: '0.12em',
     textTransform: 'uppercase' as const,
     color: 'rgba(255,255,255,0.35)',
+  },
+  outroOverlay: {
+    position: 'fixed',
+    inset: 0,
+    zIndex: 200,
+    background: 'radial-gradient(ellipse at 50% 60%, #0d0d10 0%, #000000 100%)',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  outroNoise: {
+    position: 'absolute' as const,
+    inset: 0,
+    backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")`,
+    opacity: 0.04,
+    pointerEvents: 'none' as const,
+  },
+  outroContent: {
+    display: 'flex',
+    flexDirection: 'column' as const,
+    alignItems: 'center',
+    gap: '28px',
+    textAlign: 'center' as const,
+    padding: '40px',
+  },
+  outroPill: {
+    display: 'flex',
+    alignItems: 'center',
+    gap: '8px',
+    padding: '6px 14px',
+    borderRadius: '100px',
+    border: '1px solid rgba(255,255,255,0.1)',
+    background: 'rgba(255,255,255,0.04)',
+  },
+  outroPillDot: {
+    display: 'block',
+    width: '6px',
+    height: '6px',
+    borderRadius: '50%',
+    backgroundColor: '#EA580C',
+  },
+  outroPillText: {
+    fontFamily: "'Graphik LCG', -apple-system, sans-serif",
+    fontSize: '11px',
+    letterSpacing: '0.08em',
+    textTransform: 'uppercase' as const,
+    color: 'rgba(255,255,255,0.45)',
+  },
+  outroTitle: {
+    fontFamily: "'Canela Deck', Georgia, serif",
+    fontSize: '52px',
+    fontWeight: 400,
+    color: 'rgba(255,255,255,0.9)',
+    margin: 0,
+    lineHeight: 1.15,
+    letterSpacing: '-2px',
+  },
+  outroSub: {
+    fontFamily: "'Graphik LCG', -apple-system, sans-serif",
+    fontSize: '14px',
+    color: 'rgba(255,255,255,0.25)',
+    margin: 0,
+    letterSpacing: '-0.2px',
   },
   smallScreenText: {
     fontFamily: "'Graphik LCG', -apple-system, sans-serif",
