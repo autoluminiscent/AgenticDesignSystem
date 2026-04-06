@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Eye } from 'lucide-react';
+import { X, Eye } from 'lucide-react';
 import figmaDark2 from '../../assets/figma-dark2.svg';
 import reactDark2 from '../../assets/react-dark2.svg';
 
