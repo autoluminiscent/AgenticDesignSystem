@@ -84,15 +84,15 @@ const IntroScreen: React.FC = () => {
             </div>
           </motion.h1>
 
-          <motion.p 
+          <motion.p
             style={styles.description}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ delay: 1.5, duration: 0.8 }}
           >
-            Il se composerait de 4 blocs distincts: Le Design System, le fichier de Design,
-            la librairie de composants et le projet final.
+            Il se composerait de 4 blocs distincts:<br /> Le Design System, le fichier de Design,
+            la librairie de composants et l'application finale.
           </motion.p>
 
           <motion.div 
@@ -146,12 +146,12 @@ const IntroScreen: React.FC = () => {
               <span style={styles.blockTitle}>Composants</span>
             </motion.div>
 
-            {/* Bloc 4 — Projet final : grand coin extérieur bas-gauche */}
-            <motion.div 
+            {/* Bloc 4 — Application finale : grand coin extérieur bas-gauche */}
+            <motion.div
               style={{ ...styles.block, borderRadius: '0 0 0 86px' }}
             >
               <img src={reactDark} alt="React" style={styles.blockIcon} />
-              <span style={styles.blockTitle}>Projet final</span>
+              <span style={styles.blockTitle}>Application finale</span>
             </motion.div>
 
           </div>
@@ -236,7 +236,7 @@ const styles: Record<string, React.CSSProperties> = {
   },
   description: {
     fontFamily: 'var(--font-display)',
-    fontSize: '24px',
+    fontSize: '20px',
     lineHeight: '32px',
     fontWeight: 400,
     letterSpacing: '-1.2px',
